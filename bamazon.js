@@ -1,10 +1,11 @@
 /*challenge 1
 
 //create db: bamazon*/
-var bamazonDB = require ("bamazonDB");
-var inquirer = require("inquirer");
+DROP DATABASE IF EXISTS bamazonDB;
+CREATE DATABASE bamazonDB;
+USE bamazon_db;
 
-var connection = mysql.createConnection({
+connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
@@ -13,13 +14,13 @@ var connection = mysql.createConnection({
 });
 
 /*table: products*/
-CREATE TABLE products
-(
-  itemID int,
-  product_name varchar,
-  department_name varchar,
-  price int,
-  stock_quantity int,
+CREATE TABLE products(
+  name VARCHAR (30) NOT NULL,)
+  id INTEGER(5) AUTO_INCREMENT NOT NULL,
+  product_name VARCHAR (30),
+  department_name VARCHAR (30) NOT NULL,
+  price INTEGER (5),
+  stock_quantity INTEGER (5),
 
  );
 	/*inside table: item_id
@@ -29,13 +30,14 @@ CREATE TABLE products
 	//stock_quanity
 
 */
-DROP DATABASE IF EXISTS bamazon;
-CREATE DATABASE bamazon;
+/*DROP DATABASE IF EXISTS*/
 
+DROP DATABASE bamazonDB;
+CREATE DATABASE bamazonDB;
 USE bamazon;
 
-CREATE TABLE products(
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE products (
+  id INT AUTO_INCREMENT,
   item_id VARCHAR(100) NOT NULL,
   product_name VARCHAR(45) NOT NULL,
   department_name VARCHAR(45) NOT NULL,
@@ -44,27 +46,48 @@ CREATE TABLE products(
   PRIMARY KEY (id)
 );
 
-USE bamazon;
 INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
 VALUES ("0001", "Apple", "Food", 1, 100);
 
 INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
 VALUES ("0002", "Cookies", "Food", .5, 10);
-*/
 
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0003", "Oranges", "Food", 1, 100);
 
-//insert 10 items (you will need to save a sql data (bamazon.sql))
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0004", "Pears", "Food", 1, 100);
 
-//create js file: bamazonCustomer.js
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0005", "Salt", "Food", 2, 100);
+
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0006", "Plums", "Food", 1, 100);
+
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0007", "Cherries", "Food", 1, 100);
+
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0008", "Limes", "Food", .50, 100);
+
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0009", "Oranges", "Food", 1, 100);
+
+INSERT INTO products (item_id, product_name, department_name, price, stock_quanity)
+VALUES ("0010", "Banana", "Food", 4, 100);
+
+/*insert 10 items (you will need to save a sql data (bamazon.sql))
+
+//create js file: bamazonCustomer.js*/
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-// create the connection information for the sql database
+/*create the connection information for the sql database*/
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
 
-  // Your username
+  /* Your username*/
   user: "root",
 
   // Your password
@@ -72,10 +95,10 @@ var connection = mysql.createConnection({
   database: "bamazon"
 });
 
-// connect to the mysql server and sql database
+/* connect to the mysql server and sql database*/
 connection.connect(function(err) {
   if (err) throw err;
-  // run the start function after the connection is made to prompt the user
+  /*run the start function after the connection is made to prompt the user
   start();
   //console.log("working");
 });
