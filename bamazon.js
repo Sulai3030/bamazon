@@ -4,6 +4,9 @@ var mysql = require("mysql");
 var inquirer = require("inquirer");
 
 // create the connection information for the sql database
+if (process.env.bamazonDB){
+  connection = mysql.createConnection(process.env.bamazon_URL);
+}else{
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -15,7 +18,7 @@ var connection = mysql.createConnection({
   password: "root",
   database: "bamazonDB"
 });
-
+};
 // connect to the mysql server and sql database
 connection.connect(function(err) {
   if (err) throw err;
